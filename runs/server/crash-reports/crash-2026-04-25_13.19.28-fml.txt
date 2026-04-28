@@ -1,0 +1,131 @@
+---- Minecraft Crash Report ----
+// Shall we play a game?
+
+Time: 2026-04-25 13:19:28
+Description: Mod loading error has occurred
+
+java.lang.Exception: Mod Loading has failed
+	at TRANSFORMER/neoforge@21.0.167/net.neoforged.neoforge.logging.CrashReportExtender.dumpModLoadingCrashReport(CrashReportExtender.java:57) ~[neoforge-21.0.167.jar%23190!/:?] {re:classloading}
+	at TRANSFORMER/neoforge@21.0.167/net.neoforged.neoforge.server.loading.ServerModLoader.load(ServerModLoader.java:41) ~[neoforge-21.0.167.jar%23190!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.server.Main.main(Main.java:124) ~[neoforge-21.0.167.jar%23189!/:?] {re:classloading}
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?] {}
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?] {}
+	at MC-BOOTSTRAP/fml_loader@4.0.23/net.neoforged.fml.loading.targets.CommonLaunchHandler.runTarget(CommonLaunchHandler.java:136) ~[loader-4.0.23.jar%23143!/:4.0] {}
+	at MC-BOOTSTRAP/fml_loader@4.0.23/net.neoforged.fml.loading.targets.CommonLaunchHandler.serverService(CommonLaunchHandler.java:128) ~[loader-4.0.23.jar%23143!/:4.0] {}
+	at MC-BOOTSTRAP/fml_loader@4.0.23/net.neoforged.fml.loading.targets.NeoForgeServerUserdevLaunchHandler.runService(NeoForgeServerUserdevLaunchHandler.java:23) ~[loader-4.0.23.jar%23143!/:4.0] {}
+	at MC-BOOTSTRAP/fml_loader@4.0.23/net.neoforged.fml.loading.targets.CommonLaunchHandler.lambda$launchService$4(CommonLaunchHandler.java:118) ~[loader-4.0.23.jar%23143!/:4.0] {}
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.4/cpw.mods.modlauncher.LaunchServiceHandlerDecorator.launch(LaunchServiceHandlerDecorator.java:30) [modlauncher-11.0.4.jar%23125!/:?] {}
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.4/cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:53) [modlauncher-11.0.4.jar%23125!/:?] {}
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.4/cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:71) [modlauncher-11.0.4.jar%23125!/:?] {}
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.4/cpw.mods.modlauncher.Launcher.run(Launcher.java:103) [modlauncher-11.0.4.jar%23125!/:?] {}
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.4/cpw.mods.modlauncher.Launcher.main(Launcher.java:74) [modlauncher-11.0.4.jar%23125!/:?] {}
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.4/cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:26) [modlauncher-11.0.4.jar%23125!/:?] {}
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.4/cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:23) [modlauncher-11.0.4.jar%23125!/:?] {}
+	at cpw.mods.bootstraplauncher@2.0.2/cpw.mods.bootstraplauncher.BootstrapLauncher.run(BootstrapLauncher.java:210) [bootstraplauncher-2.0.2.jar:?] {}
+	at cpw.mods.bootstraplauncher@2.0.2/cpw.mods.bootstraplauncher.BootstrapLauncher.main(BootstrapLauncher.java:69) [bootstraplauncher-2.0.2.jar:?] {}
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: main
+Stacktrace:
+	at MC-BOOTSTRAP/fml_loader@4.0.23/net.neoforged.fml.common.asm.RuntimeDistCleaner.processClassWithFlags(RuntimeDistCleaner.java:60) ~[loader-4.0.23.jar%23143!/:4.0] {}
+-- MOD examplemod --
+Details:
+	Mod File: /C:/Users/Marti/Desktop/MC Modding/cosmeticbloodlines/build/resources/main/
+	Failure message: fml.modloadingissue.failedtoloadmod
+	Mod Version: 1.0.0
+	Mod Issue URL: NOT PROVIDED
+	Exception message: java.lang.RuntimeException: Attempted to load class net/minecraft/client/gui/screens/Screen for invalid dist DEDICATED_SERVER
+Stacktrace:
+	at MC-BOOTSTRAP/fml_loader@4.0.23/net.neoforged.fml.common.asm.RuntimeDistCleaner.processClassWithFlags(RuntimeDistCleaner.java:60) ~[loader-4.0.23.jar:4.0] {}
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.4/cpw.mods.modlauncher.LaunchPluginHandler.offerClassNodeToPlugins(LaunchPluginHandler.java:94) ~[modlauncher-11.0.4.jar:?] {}
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.4/cpw.mods.modlauncher.ClassTransformer.transform(ClassTransformer.java:120) ~[modlauncher-11.0.4.jar:?] {}
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.4/cpw.mods.modlauncher.TransformingClassLoader.maybeTransformClassBytes(TransformingClassLoader.java:57) ~[modlauncher-11.0.4.jar:?] {}
+	at cpw.mods.securejarhandler/cpw.mods.cl.ModuleClassLoader.readerToClass(ModuleClassLoader.java:190) ~[securejarhandler-3.0.8.jar:?] {}
+	at cpw.mods.securejarhandler/cpw.mods.cl.ModuleClassLoader.lambda$findClass$20(ModuleClassLoader.java:298) ~[securejarhandler-3.0.8.jar:?] {}
+	at cpw.mods.securejarhandler/cpw.mods.cl.ModuleClassLoader.loadFromModule(ModuleClassLoader.java:311) ~[securejarhandler-3.0.8.jar:?] {}
+	at cpw.mods.securejarhandler/cpw.mods.cl.ModuleClassLoader.findClass(ModuleClassLoader.java:298) ~[securejarhandler-3.0.8.jar:?] {}
+	at cpw.mods.securejarhandler/cpw.mods.cl.ModuleClassLoader.loadClass(ModuleClassLoader.java:214) ~[securejarhandler-3.0.8.jar:?] {}
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526) ~[?:?] {}
+	at java.base/java.lang.Class.forName0(Native Method) ~[?:?] {re:mixin}
+	at java.base/java.lang.Class.forName(Class.java:534) ~[?:?] {re:mixin}
+	at java.base/java.lang.Class.forName(Class.java:513) ~[?:?] {re:mixin}
+	at MC-BOOTSTRAP/fml_loader@4.0.23/net.neoforged.fml.javafmlmod.AutomaticEventSubscriber.lambda$inject$4(AutomaticEventSubscriber.java:60) ~[loader-4.0.23.jar%23143!/:4.0] {}
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) ~[?:?] {re:mixin}
+	at MC-BOOTSTRAP/fml_loader@4.0.23/net.neoforged.fml.javafmlmod.AutomaticEventSubscriber.inject(AutomaticEventSubscriber.java:44) ~[loader-4.0.23.jar%23143!/:4.0] {}
+	at MC-BOOTSTRAP/fml_loader@4.0.23/net.neoforged.fml.javafmlmod.FMLModContainer.constructMod(FMLModContainer.java:126) ~[loader-4.0.23.jar%23143!/:4.0] {}
+	at MC-BOOTSTRAP/fml_loader@4.0.23/net.neoforged.fml.ModLoader.lambda$constructMods$3(ModLoader.java:153) ~[loader-4.0.23.jar%23143!/:4.0] {}
+	at MC-BOOTSTRAP/fml_loader@4.0.23/net.neoforged.fml.ModLoader.lambda$dispatchParallelTask$7(ModLoader.java:231) ~[loader-4.0.23.jar%23143!/:4.0] {}
+	at java.base/java.util.concurrent.CompletableFuture.uniHandle(CompletableFuture.java:934) ~[?:?] {}
+	at java.base/java.util.concurrent.CompletableFuture$UniHandle.tryFire(CompletableFuture.java:911) ~[?:?] {}
+	at java.base/java.util.concurrent.CompletableFuture$Completion.exec(CompletableFuture.java:483) ~[?:?] {}
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:387) ~[?:?] {}
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1310) ~[?:?] {}
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1841) ~[?:?] {}
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1806) ~[?:?] {}
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:188) ~[?:?] {}
+
+
+-- System Details --
+Details:
+	Minecraft Version: 1.21
+	Minecraft Version ID: 1.21
+	Operating System: Windows 11 (amd64) version 10.0
+	Java Version: 21.0.8, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode, sharing), Oracle Corporation
+	Memory: 155831688 bytes (148 MiB) / 444596224 bytes (424 MiB) up to 17137926144 bytes (16344 MiB)
+	CPUs: 24
+	Processor Vendor: GenuineIntel
+	Processor Name: 13th Gen Intel(R) Core(TM) i7-13700KF
+	Identifier: Intel64 Family 6 Model 183 Stepping 1
+	Microarchitecture: Raptor Lake
+	Frequency (GHz): 3.42
+	Number of physical packages: 1
+	Number of physical CPUs: 16
+	Number of logical CPUs: 24
+	Graphics card #0 name: NVIDIA GeForce RTX 4080 SUPER
+	Graphics card #0 vendor: NVIDIA
+	Graphics card #0 VRAM (MiB): 16376.00
+	Graphics card #0 deviceId: VideoController1
+	Graphics card #0 versionInfo: 32.0.15.9597
+	Memory slot #0 capacity (MiB): 32768.00
+	Memory slot #0 clockSpeed (GHz): 6.40
+	Memory slot #0 type: Unknown
+	Memory slot #1 capacity (MiB): 32768.00
+	Memory slot #1 clockSpeed (GHz): 6.40
+	Memory slot #1 type: Unknown
+	Virtual memory max (MiB): 69462.59
+	Virtual memory used (MiB): 31862.63
+	Swap memory total (MiB): 4096.00
+	Swap memory used (MiB): 0.00
+	Space in storage for jna.tmpdir (MiB): <path not set>
+	Space in storage for org.lwjgl.system.SharedLibraryExtractPath (MiB): <path not set>
+	Space in storage for io.netty.native.workdir (MiB): <path not set>
+	Space in storage for java.io.tmpdir (MiB): available: 48273.93, total: 952419.00
+	Space in storage for workdir (MiB): available: 48273.93, total: 952419.00
+	JVM Flags: 0 total; 
+	ModLauncher: 11.0.4+main.d2e20e43
+	ModLauncher launch target: forgeserveruserdev
+	ModLauncher services: 
+		sponge-mixin-0.14.0+mixin.0.8.6.jar mixin PLUGINSERVICE 
+		loader-4.0.23.jar slf4jfixer PLUGINSERVICE 
+		loader-4.0.23.jar runtime_enum_extender PLUGINSERVICE 
+		at-modlauncher-10.0.1.jar accesstransformer PLUGINSERVICE 
+		loader-4.0.23.jar runtimedistcleaner PLUGINSERVICE 
+		modlauncher-11.0.4.jar mixin TRANSFORMATIONSERVICE 
+		modlauncher-11.0.4.jar fml TRANSFORMATIONSERVICE 
+	FML Language Providers: 
+		javafml@4.0
+		lowcodefml@4.0
+		minecraft@4.0
+	Mod List: 
+		neoforge-21.0.167.jar                             |Minecraft                     |minecraft                     |1.21                |Manifest: NOSIGNATURE
+		vampirism-233029-6387585.jar                      |Vampirism                     |vampirism                     |1.10.5              |Manifest: NOSIGNATURE
+		neoforge-21.0.167.jar                             |NeoForge                      |neoforge                      |21.0.167            |Manifest: NOSIGNATURE
+		main                                              |Example Mod                   |examplemod                    |1.0.0               |Manifest: NOSIGNATURE
+	Crash Report UUID: 39e4085a-c946-403a-83f9-055c56081f7d
+	FML: 4.0.23
+	NeoForge: 21.0.167

@@ -1,0 +1,229 @@
+---- Minecraft Crash Report ----
+// You're mean.
+
+Time: 2026-04-24 18:33:46
+Description: Mod loading error has occurred
+
+java.lang.Exception: Mod Loading has failed
+	at TRANSFORMER/neoforge@21.0.167/net.neoforged.neoforge.logging.CrashReportExtender.dumpModLoadingCrashReport(CrashReportExtender.java:57) ~[neoforge-21.0.167.jar%23190!/:?] {re:classloading}
+	at TRANSFORMER/neoforge@21.0.167/net.neoforged.neoforge.client.loading.ClientModLoader.completeModLoading(ClientModLoader.java:123) ~[neoforge-21.0.167.jar%23190!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.Minecraft.buildInitialScreens(Minecraft.java:679) ~[neoforge-21.0.167.jar%23189!/:?] {re:mixin,pl:runtimedistcleaner:A,re:classloading,pl:mixin:A,pl:runtimedistcleaner:A}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.Minecraft.onGameLoadFinished(Minecraft.java:652) ~[neoforge-21.0.167.jar%23189!/:?] {re:mixin,pl:runtimedistcleaner:A,re:classloading,pl:mixin:A,pl:runtimedistcleaner:A}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.Minecraft.onResourceLoadFinished(Minecraft.java:647) ~[neoforge-21.0.167.jar%23189!/:?] {re:mixin,pl:runtimedistcleaner:A,re:classloading,pl:mixin:A,pl:runtimedistcleaner:A}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.Minecraft.lambda$new$7(Minecraft.java:635) ~[neoforge-21.0.167.jar%23189!/:?] {re:mixin,pl:runtimedistcleaner:A,re:classloading,pl:mixin:A,pl:runtimedistcleaner:A}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.Util.ifElse(Util.java:516) ~[neoforge-21.0.167.jar%23189!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.Minecraft.lambda$new$8(Minecraft.java:629) ~[neoforge-21.0.167.jar%23189!/:?] {re:mixin,pl:runtimedistcleaner:A,re:classloading,pl:mixin:A,pl:runtimedistcleaner:A}
+	at TRANSFORMER/neoforge@21.0.167/net.neoforged.neoforge.client.loading.NeoForgeLoadingOverlay.render(NeoForgeLoadingOverlay.java:145) ~[neoforge-21.0.167.jar%23190!/:?] {re:classloading}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.renderer.GameRenderer.render(GameRenderer.java:1087) ~[neoforge-21.0.167.jar%23189!/:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A,re:mixin,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.Minecraft.runTick(Minecraft.java:1201) ~[neoforge-21.0.167.jar%23189!/:?] {re:mixin,pl:runtimedistcleaner:A,re:classloading,pl:mixin:A,pl:runtimedistcleaner:A}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.Minecraft.run(Minecraft.java:813) ~[neoforge-21.0.167.jar%23189!/:?] {re:mixin,pl:runtimedistcleaner:A,re:classloading,pl:mixin:A,pl:runtimedistcleaner:A}
+	at TRANSFORMER/minecraft@1.21/net.minecraft.client.main.Main.main(Main.java:230) ~[neoforge-21.0.167.jar%23189!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?] {}
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?] {}
+	at MC-BOOTSTRAP/fml_loader@4.0.23/net.neoforged.fml.loading.targets.CommonLaunchHandler.runTarget(CommonLaunchHandler.java:136) ~[loader-4.0.23.jar%23143!/:4.0] {}
+	at MC-BOOTSTRAP/fml_loader@4.0.23/net.neoforged.fml.loading.targets.CommonLaunchHandler.clientService(CommonLaunchHandler.java:124) ~[loader-4.0.23.jar%23143!/:4.0] {}
+	at MC-BOOTSTRAP/fml_loader@4.0.23/net.neoforged.fml.loading.targets.NeoForgeClientUserdevLaunchHandler.runService(NeoForgeClientUserdevLaunchHandler.java:23) ~[loader-4.0.23.jar%23143!/:4.0] {}
+	at MC-BOOTSTRAP/fml_loader@4.0.23/net.neoforged.fml.loading.targets.CommonLaunchHandler.lambda$launchService$4(CommonLaunchHandler.java:118) ~[loader-4.0.23.jar%23143!/:4.0] {}
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.4/cpw.mods.modlauncher.LaunchServiceHandlerDecorator.launch(LaunchServiceHandlerDecorator.java:30) [modlauncher-11.0.4.jar%23125!/:?] {}
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.4/cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:53) [modlauncher-11.0.4.jar%23125!/:?] {}
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.4/cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:71) [modlauncher-11.0.4.jar%23125!/:?] {}
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.4/cpw.mods.modlauncher.Launcher.run(Launcher.java:103) [modlauncher-11.0.4.jar%23125!/:?] {}
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.4/cpw.mods.modlauncher.Launcher.main(Launcher.java:74) [modlauncher-11.0.4.jar%23125!/:?] {}
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.4/cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:26) [modlauncher-11.0.4.jar%23125!/:?] {}
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.4/cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:23) [modlauncher-11.0.4.jar%23125!/:?] {}
+	at cpw.mods.bootstraplauncher@2.0.2/cpw.mods.bootstraplauncher.BootstrapLauncher.run(BootstrapLauncher.java:210) [bootstraplauncher-2.0.2.jar:?] {}
+	at cpw.mods.bootstraplauncher@2.0.2/cpw.mods.bootstraplauncher.BootstrapLauncher.main(BootstrapLauncher.java:69) [bootstraplauncher-2.0.2.jar:?] {}
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Render thread
+Stacktrace:
+	at MC-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.mixin.injection.callback.CallbackInjector.inject(CallbackInjector.java:552) ~[sponge-mixin-0.14.0+mixin.0.8.6.jar%23135!/:0.14.0+mixin.0.8.6] {}
+-- MOD vampirism --
+Details:
+	Caused by 0: org.spongepowered.asm.mixin.transformer.throwables.MixinTransformerError: An unexpected critical error was encountered
+		at MC-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.mixin.transformer.MixinProcessor.applyMixins(MixinProcessor.java:392) ~[sponge-mixin-0.14.0+mixin.0.8.6.jar:0.14.0+mixin.0.8.6] {}
+		at MC-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.mixin.transformer.MixinTransformer.transformClass(MixinTransformer.java:250) ~[sponge-mixin-0.14.0+mixin.0.8.6.jar:0.14.0+mixin.0.8.6] {}
+		at MC-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.service.modlauncher.MixinTransformationHandler.processClass(MixinTransformationHandler.java:131) ~[sponge-mixin-0.14.0+mixin.0.8.6.jar:0.14.0+mixin.0.8.6] {}
+		at MC-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.launch.MixinLaunchPluginLegacy.processClass(MixinLaunchPluginLegacy.java:131) ~[sponge-mixin-0.14.0+mixin.0.8.6.jar:0.14.0+mixin.0.8.6] {}
+		at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.4/cpw.mods.modlauncher.serviceapi.ILaunchPluginService.processClassWithFlags(ILaunchPluginService.java:156) ~[modlauncher-11.0.4.jar:11.0.4+main.d2e20e43] {}
+		at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.4/cpw.mods.modlauncher.LaunchPluginHandler.offerClassNodeToPlugins(LaunchPluginHandler.java:94) ~[modlauncher-11.0.4.jar:?] {}
+		at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.4/cpw.mods.modlauncher.ClassTransformer.transform(ClassTransformer.java:120) ~[modlauncher-11.0.4.jar:?] {}
+		at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.4/cpw.mods.modlauncher.TransformingClassLoader.maybeTransformClassBytes(TransformingClassLoader.java:57) ~[modlauncher-11.0.4.jar:?] {}
+		at cpw.mods.securejarhandler/cpw.mods.cl.ModuleClassLoader.readerToClass(ModuleClassLoader.java:190) ~[securejarhandler-3.0.8.jar:?] {}
+		at cpw.mods.securejarhandler/cpw.mods.cl.ModuleClassLoader.lambda$findClass$20(ModuleClassLoader.java:298) ~[securejarhandler-3.0.8.jar:?] {}
+		at cpw.mods.securejarhandler/cpw.mods.cl.ModuleClassLoader.loadFromModule(ModuleClassLoader.java:311) ~[securejarhandler-3.0.8.jar:?] {}
+		at cpw.mods.securejarhandler/cpw.mods.cl.ModuleClassLoader.findClass(ModuleClassLoader.java:298) ~[securejarhandler-3.0.8.jar:?] {}
+		at cpw.mods.securejarhandler/cpw.mods.cl.ModuleClassLoader.loadClass(ModuleClassLoader.java:214) ~[securejarhandler-3.0.8.jar:?] {}
+		at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526) ~[?:?] {}
+		at java.base/java.lang.Class.getDeclaredMethods0(Native Method) ~[?:?] {re:mixin}
+		at java.base/java.lang.Class.privateGetDeclaredMethods(Class.java:3578) ~[?:?] {re:mixin}
+		at java.base/java.lang.Class.getDeclaredMethods(Class.java:2676) ~[?:?] {re:mixin}
+		at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.EventBus.register(EventBus.java:85) ~[bus-8.0.1.jar%23147!/:?] {}
+		at TRANSFORMER/vampirism@1.10.5/de.teamlapen.vampirism.client.VampirismModClient.<init>(VampirismModClient.java:67) ~[vampirism-233029-6387585.jar%23193!/:1.21-1.10.5] {re:classloading,re:mixin}
+		at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62) ~[?:?] {}
+		at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502) ~[?:?] {}
+		at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486) ~[?:?] {}
+		at MC-BOOTSTRAP/fml_loader@4.0.23/net.neoforged.fml.javafmlmod.FMLModContainer.constructMod(FMLModContainer.java:115) ~[loader-4.0.23.jar%23143!/:4.0] {}
+		at MC-BOOTSTRAP/fml_loader@4.0.23/net.neoforged.fml.ModLoader.lambda$constructMods$3(ModLoader.java:153) ~[loader-4.0.23.jar%23143!/:4.0] {}
+		at MC-BOOTSTRAP/fml_loader@4.0.23/net.neoforged.fml.ModLoader.lambda$dispatchParallelTask$7(ModLoader.java:231) ~[loader-4.0.23.jar%23143!/:4.0] {}
+		at java.base/java.util.concurrent.CompletableFuture.uniHandle(CompletableFuture.java:934) ~[?:?] {}
+		at java.base/java.util.concurrent.CompletableFuture$UniHandle.tryFire(CompletableFuture.java:911) ~[?:?] {}
+		at java.base/java.util.concurrent.CompletableFuture$Completion.exec(CompletableFuture.java:483) ~[?:?] {}
+		at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:387) ~[?:?] {}
+		at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1310) ~[?:?] {}
+		at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1841) ~[?:?] {}
+		at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1806) ~[?:?] {}
+		at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:188) ~[?:?] {}
+
+	Caused by 1: org.spongepowered.asm.mixin.throwables.MixinApplyError: Mixin [examplemod.mixins.json:VampirePlayerMixin from mod examplemod] from phase [DEFAULT] in config [examplemod.mixins.json] FAILED during APPLY
+		at MC-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.mixin.transformer.MixinProcessor.handleMixinError(MixinProcessor.java:638) ~[sponge-mixin-0.14.0+mixin.0.8.6.jar:0.14.0+mixin.0.8.6] {}
+		at MC-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.mixin.transformer.MixinProcessor.handleMixinApplyError(MixinProcessor.java:589) ~[sponge-mixin-0.14.0+mixin.0.8.6.jar:0.14.0+mixin.0.8.6] {}
+		at MC-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.mixin.transformer.MixinProcessor.applyMixins(MixinProcessor.java:379) ~[sponge-mixin-0.14.0+mixin.0.8.6.jar:0.14.0+mixin.0.8.6] {}
+		at MC-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.mixin.transformer.MixinTransformer.transformClass(MixinTransformer.java:250) ~[sponge-mixin-0.14.0+mixin.0.8.6.jar:0.14.0+mixin.0.8.6] {}
+		at MC-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.service.modlauncher.MixinTransformationHandler.processClass(MixinTransformationHandler.java:131) ~[sponge-mixin-0.14.0+mixin.0.8.6.jar:0.14.0+mixin.0.8.6] {}
+		at MC-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.launch.MixinLaunchPluginLegacy.processClass(MixinLaunchPluginLegacy.java:131) ~[sponge-mixin-0.14.0+mixin.0.8.6.jar:0.14.0+mixin.0.8.6] {}
+		at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.4/cpw.mods.modlauncher.serviceapi.ILaunchPluginService.processClassWithFlags(ILaunchPluginService.java:156) ~[modlauncher-11.0.4.jar:11.0.4+main.d2e20e43] {}
+		at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.4/cpw.mods.modlauncher.LaunchPluginHandler.offerClassNodeToPlugins(LaunchPluginHandler.java:94) ~[modlauncher-11.0.4.jar:?] {}
+		at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.4/cpw.mods.modlauncher.ClassTransformer.transform(ClassTransformer.java:120) ~[modlauncher-11.0.4.jar:?] {}
+		at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.4/cpw.mods.modlauncher.TransformingClassLoader.maybeTransformClassBytes(TransformingClassLoader.java:57) ~[modlauncher-11.0.4.jar:?] {}
+		at cpw.mods.securejarhandler/cpw.mods.cl.ModuleClassLoader.readerToClass(ModuleClassLoader.java:190) ~[securejarhandler-3.0.8.jar:?] {}
+		at cpw.mods.securejarhandler/cpw.mods.cl.ModuleClassLoader.lambda$findClass$20(ModuleClassLoader.java:298) ~[securejarhandler-3.0.8.jar:?] {}
+		at cpw.mods.securejarhandler/cpw.mods.cl.ModuleClassLoader.loadFromModule(ModuleClassLoader.java:311) ~[securejarhandler-3.0.8.jar:?] {}
+		at cpw.mods.securejarhandler/cpw.mods.cl.ModuleClassLoader.findClass(ModuleClassLoader.java:298) ~[securejarhandler-3.0.8.jar:?] {}
+		at cpw.mods.securejarhandler/cpw.mods.cl.ModuleClassLoader.loadClass(ModuleClassLoader.java:214) ~[securejarhandler-3.0.8.jar:?] {}
+		at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526) ~[?:?] {}
+		at java.base/java.lang.Class.getDeclaredMethods0(Native Method) ~[?:?] {re:mixin}
+		at java.base/java.lang.Class.privateGetDeclaredMethods(Class.java:3578) ~[?:?] {re:mixin}
+		at java.base/java.lang.Class.getDeclaredMethods(Class.java:2676) ~[?:?] {re:mixin}
+		at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.EventBus.register(EventBus.java:85) ~[bus-8.0.1.jar%23147!/:?] {}
+		at TRANSFORMER/vampirism@1.10.5/de.teamlapen.vampirism.client.VampirismModClient.<init>(VampirismModClient.java:67) ~[vampirism-233029-6387585.jar%23193!/:1.21-1.10.5] {re:classloading,re:mixin}
+		at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62) ~[?:?] {}
+		at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502) ~[?:?] {}
+		at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486) ~[?:?] {}
+		at MC-BOOTSTRAP/fml_loader@4.0.23/net.neoforged.fml.javafmlmod.FMLModContainer.constructMod(FMLModContainer.java:115) ~[loader-4.0.23.jar%23143!/:4.0] {}
+		at MC-BOOTSTRAP/fml_loader@4.0.23/net.neoforged.fml.ModLoader.lambda$constructMods$3(ModLoader.java:153) ~[loader-4.0.23.jar%23143!/:4.0] {}
+		at MC-BOOTSTRAP/fml_loader@4.0.23/net.neoforged.fml.ModLoader.lambda$dispatchParallelTask$7(ModLoader.java:231) ~[loader-4.0.23.jar%23143!/:4.0] {}
+		at java.base/java.util.concurrent.CompletableFuture.uniHandle(CompletableFuture.java:934) ~[?:?] {}
+		at java.base/java.util.concurrent.CompletableFuture$UniHandle.tryFire(CompletableFuture.java:911) ~[?:?] {}
+		at java.base/java.util.concurrent.CompletableFuture$Completion.exec(CompletableFuture.java:483) ~[?:?] {}
+		at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:387) ~[?:?] {}
+		at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1310) ~[?:?] {}
+		at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1841) ~[?:?] {}
+		at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1806) ~[?:?] {}
+		at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:188) ~[?:?] {}
+
+	Mod File: /C:/Users/Marti/.gradle/caches/modules-2/files-2.1/curse.maven/vampirism-233029/6387585/c6badc49f4fddf1994f6105b9ac6a33df166cdbc/vampirism-233029-6387585.jar
+	Failure message: fml.modloadingissue.failedtoloadmod
+	Mod Version: 1.10.5
+	Mod Issue URL: https://github.com/TeamLapen/Vampirism/issues
+	Exception message: org.spongepowered.asm.mixin.injection.throwables.InvalidInjectionException: Invalid descriptor on examplemod.mixins.json:VampirePlayerMixin from mod examplemod->@Inject::onTryInfect(Lde/teamlapen/vampirism/api/entity/vampire/IVampire;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V! CallbackInfoReturnable is required! [INJECT Applicator Phase -> examplemod.mixins.json:VampirePlayerMixin from mod examplemod -> Apply Injections ->  -> Inject -> examplemod.mixins.json:VampirePlayerMixin from mod examplemod->@Inject::onTryInfect(Lde/teamlapen/vampirism/api/entity/vampire/IVampire;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V]
+Stacktrace:
+	at MC-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.mixin.injection.callback.CallbackInjector.inject(CallbackInjector.java:552) ~[sponge-mixin-0.14.0+mixin.0.8.6.jar:0.14.0+mixin.0.8.6] {}
+	at MC-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.mixin.injection.callback.CallbackInjector.inject(CallbackInjector.java:490) ~[sponge-mixin-0.14.0+mixin.0.8.6.jar:0.14.0+mixin.0.8.6] {}
+	at MC-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.mixin.injection.code.Injector.inject(Injector.java:284) ~[sponge-mixin-0.14.0+mixin.0.8.6.jar:0.14.0+mixin.0.8.6] {}
+	at MC-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.mixin.injection.struct.InjectionInfo.inject(InjectionInfo.java:436) ~[sponge-mixin-0.14.0+mixin.0.8.6.jar:0.14.0+mixin.0.8.6] {}
+	at MC-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.mixin.transformer.MixinTargetContext.applyInjections(MixinTargetContext.java:1443) ~[sponge-mixin-0.14.0+mixin.0.8.6.jar:0.14.0+mixin.0.8.6] {}
+	at MC-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.mixin.transformer.MixinApplicatorStandard.applyInjections(MixinApplicatorStandard.java:705) ~[sponge-mixin-0.14.0+mixin.0.8.6.jar:0.14.0+mixin.0.8.6] {}
+	at MC-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.mixin.transformer.MixinApplicatorStandard.applyMixin(MixinApplicatorStandard.java:295) ~[sponge-mixin-0.14.0+mixin.0.8.6.jar:0.14.0+mixin.0.8.6] {}
+	at MC-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.mixin.transformer.MixinApplicatorStandard.apply(MixinApplicatorStandard.java:220) ~[sponge-mixin-0.14.0+mixin.0.8.6.jar:0.14.0+mixin.0.8.6] {}
+	at MC-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.mixin.transformer.TargetClassContext.apply(TargetClassContext.java:437) ~[sponge-mixin-0.14.0+mixin.0.8.6.jar:0.14.0+mixin.0.8.6] {}
+	at MC-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.mixin.transformer.TargetClassContext.applyMixins(TargetClassContext.java:418) ~[sponge-mixin-0.14.0+mixin.0.8.6.jar:0.14.0+mixin.0.8.6] {}
+	at MC-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.mixin.transformer.MixinProcessor.applyMixins(MixinProcessor.java:363) ~[sponge-mixin-0.14.0+mixin.0.8.6.jar:0.14.0+mixin.0.8.6] {}
+	at MC-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.mixin.transformer.MixinTransformer.transformClass(MixinTransformer.java:250) ~[sponge-mixin-0.14.0+mixin.0.8.6.jar:0.14.0+mixin.0.8.6] {}
+	at MC-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.service.modlauncher.MixinTransformationHandler.processClass(MixinTransformationHandler.java:131) ~[sponge-mixin-0.14.0+mixin.0.8.6.jar:0.14.0+mixin.0.8.6] {}
+	at MC-BOOTSTRAP/org.spongepowered.mixin/org.spongepowered.asm.launch.MixinLaunchPluginLegacy.processClass(MixinLaunchPluginLegacy.java:131) ~[sponge-mixin-0.14.0+mixin.0.8.6.jar:0.14.0+mixin.0.8.6] {}
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.4/cpw.mods.modlauncher.serviceapi.ILaunchPluginService.processClassWithFlags(ILaunchPluginService.java:156) ~[modlauncher-11.0.4.jar:11.0.4+main.d2e20e43] {}
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.4/cpw.mods.modlauncher.LaunchPluginHandler.offerClassNodeToPlugins(LaunchPluginHandler.java:94) ~[modlauncher-11.0.4.jar:?] {}
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.4/cpw.mods.modlauncher.ClassTransformer.transform(ClassTransformer.java:120) ~[modlauncher-11.0.4.jar:?] {}
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.4/cpw.mods.modlauncher.TransformingClassLoader.maybeTransformClassBytes(TransformingClassLoader.java:57) ~[modlauncher-11.0.4.jar:?] {}
+	at cpw.mods.securejarhandler/cpw.mods.cl.ModuleClassLoader.readerToClass(ModuleClassLoader.java:190) ~[securejarhandler-3.0.8.jar:?] {}
+	at cpw.mods.securejarhandler/cpw.mods.cl.ModuleClassLoader.lambda$findClass$20(ModuleClassLoader.java:298) ~[securejarhandler-3.0.8.jar:?] {}
+	at cpw.mods.securejarhandler/cpw.mods.cl.ModuleClassLoader.loadFromModule(ModuleClassLoader.java:311) ~[securejarhandler-3.0.8.jar:?] {}
+	at cpw.mods.securejarhandler/cpw.mods.cl.ModuleClassLoader.findClass(ModuleClassLoader.java:298) ~[securejarhandler-3.0.8.jar:?] {}
+	at cpw.mods.securejarhandler/cpw.mods.cl.ModuleClassLoader.loadClass(ModuleClassLoader.java:214) ~[securejarhandler-3.0.8.jar:?] {}
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526) ~[?:?] {}
+	at java.base/java.lang.Class.getDeclaredMethods0(Native Method) ~[?:?] {re:mixin}
+	at java.base/java.lang.Class.privateGetDeclaredMethods(Class.java:3578) ~[?:?] {re:mixin}
+	at java.base/java.lang.Class.getDeclaredMethods(Class.java:2676) ~[?:?] {re:mixin}
+	at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.EventBus.register(EventBus.java:85) ~[bus-8.0.1.jar%23147!/:?] {}
+	at TRANSFORMER/vampirism@1.10.5/de.teamlapen.vampirism.client.VampirismModClient.<init>(VampirismModClient.java:67) ~[vampirism-233029-6387585.jar%23193!/:1.21-1.10.5] {re:classloading,re:mixin}
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62) ~[?:?] {}
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502) ~[?:?] {}
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486) ~[?:?] {}
+	at MC-BOOTSTRAP/fml_loader@4.0.23/net.neoforged.fml.javafmlmod.FMLModContainer.constructMod(FMLModContainer.java:115) ~[loader-4.0.23.jar%23143!/:4.0] {}
+	at MC-BOOTSTRAP/fml_loader@4.0.23/net.neoforged.fml.ModLoader.lambda$constructMods$3(ModLoader.java:153) ~[loader-4.0.23.jar%23143!/:4.0] {}
+	at MC-BOOTSTRAP/fml_loader@4.0.23/net.neoforged.fml.ModLoader.lambda$dispatchParallelTask$7(ModLoader.java:231) ~[loader-4.0.23.jar%23143!/:4.0] {}
+	at java.base/java.util.concurrent.CompletableFuture.uniHandle(CompletableFuture.java:934) ~[?:?] {}
+	at java.base/java.util.concurrent.CompletableFuture$UniHandle.tryFire(CompletableFuture.java:911) ~[?:?] {}
+	at java.base/java.util.concurrent.CompletableFuture$Completion.exec(CompletableFuture.java:483) ~[?:?] {}
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:387) ~[?:?] {}
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1310) ~[?:?] {}
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1841) ~[?:?] {}
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1806) ~[?:?] {}
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:188) ~[?:?] {}
+
+
+-- System Details --
+Details:
+	Minecraft Version: 1.21
+	Minecraft Version ID: 1.21
+	Operating System: Windows 11 (amd64) version 10.0
+	Java Version: 21.0.8, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode, sharing), Oracle Corporation
+	Memory: 395435824 bytes (377 MiB) / 754974720 bytes (720 MiB) up to 17137926144 bytes (16344 MiB)
+	CPUs: 24
+	Processor Vendor: GenuineIntel
+	Processor Name: 13th Gen Intel(R) Core(TM) i7-13700KF
+	Identifier: Intel64 Family 6 Model 183 Stepping 1
+	Microarchitecture: Raptor Lake
+	Frequency (GHz): 3.42
+	Number of physical packages: 1
+	Number of physical CPUs: 16
+	Number of logical CPUs: 24
+	Graphics card #0 name: NVIDIA GeForce RTX 4080 SUPER
+	Graphics card #0 vendor: NVIDIA
+	Graphics card #0 VRAM (MiB): 16376.00
+	Graphics card #0 deviceId: VideoController1
+	Graphics card #0 versionInfo: 32.0.15.9597
+	Memory slot #0 capacity (MiB): 32768.00
+	Memory slot #0 clockSpeed (GHz): 6.40
+	Memory slot #0 type: Unknown
+	Memory slot #1 capacity (MiB): 32768.00
+	Memory slot #1 clockSpeed (GHz): 6.40
+	Memory slot #1 type: Unknown
+	Virtual memory max (MiB): 69462.59
+	Virtual memory used (MiB): 20263.43
+	Swap memory total (MiB): 4096.00
+	Swap memory used (MiB): 0.00
+	Space in storage for jna.tmpdir (MiB): <path not set>
+	Space in storage for org.lwjgl.system.SharedLibraryExtractPath (MiB): <path not set>
+	Space in storage for io.netty.native.workdir (MiB): <path not set>
+	Space in storage for java.io.tmpdir (MiB): available: 47690.97, total: 952419.00
+	Space in storage for workdir (MiB): available: 47690.97, total: 952419.00
+	JVM Flags: 1 total; -XX:HeapDumpPath=MojangTricksIntelDriversForPerformance_javaw.exe_minecraft.exe.heapdump
+	ModLauncher: 11.0.4+main.d2e20e43
+	ModLauncher launch target: forgeclientuserdev
+	ModLauncher services: 
+		sponge-mixin-0.14.0+mixin.0.8.6.jar mixin PLUGINSERVICE 
+		loader-4.0.23.jar slf4jfixer PLUGINSERVICE 
+		loader-4.0.23.jar runtime_enum_extender PLUGINSERVICE 
+		at-modlauncher-10.0.1.jar accesstransformer PLUGINSERVICE 
+		loader-4.0.23.jar runtimedistcleaner PLUGINSERVICE 
+		modlauncher-11.0.4.jar mixin TRANSFORMATIONSERVICE 
+		modlauncher-11.0.4.jar fml TRANSFORMATIONSERVICE 
+	FML Language Providers: 
+		javafml@4.0
+		lowcodefml@4.0
+		minecraft@4.0
+	Mod List: 
+		neoforge-21.0.167.jar                             |Minecraft                     |minecraft                     |1.21                |Manifest: NOSIGNATURE
+		vampirism-233029-6387585.jar                      |Vampirism                     |vampirism                     |1.10.5              |Manifest: NOSIGNATURE
+		neoforge-21.0.167.jar                             |NeoForge                      |neoforge                      |21.0.167            |Manifest: NOSIGNATURE
+		main                                              |Example Mod                   |examplemod                    |1.0.0               |Manifest: NOSIGNATURE
+	Crash Report UUID: 1544237f-4e4c-42e0-a3d2-0845c41d235e
+	FML: 4.0.23
+	NeoForge: 21.0.167

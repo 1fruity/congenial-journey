@@ -1,0 +1,245 @@
+{
+  "minecraft:recipes/decorations/crafting_table": {
+    "criteria": {
+      "unlock_right_away": "2026-04-24 18:59:19 -0500"
+    },
+    "done": true
+  },
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "minecraft:beach": "2026-04-24 19:12:23 -0500",
+      "minecraft:taiga": "2026-04-24 18:59:20 -0500"
+    },
+    "done": false
+  },
+  "vampirism:vampire/blood_cult": {
+    "criteria": {
+      "main": "2026-04-24 19:11:51 -0500"
+    },
+    "done": false
+  },
+  "vampirism:vampire/freeze_kill": {
+    "criteria": {
+      "main": "2026-04-24 19:11:51 -0500"
+    },
+    "done": false
+  },
+  "vampirism:vampire/first_blood": {
+    "criteria": {
+      "main": "2026-04-24 19:11:51 -0500"
+    },
+    "done": false
+  },
+  "vampirism:vampire/extra_storage": {
+    "criteria": {
+      "main": "2026-04-24 19:11:51 -0500"
+    },
+    "done": false
+  },
+  "vampirism:vampire/yuck": {
+    "criteria": {
+      "main": "2026-04-24 19:11:51 -0500"
+    },
+    "done": false
+  },
+  "vampirism:vampire/sniped": {
+    "criteria": {
+      "main": "2026-04-24 19:11:51 -0500"
+    },
+    "done": false
+  },
+  "vampirism:vampire/kill_mother": {
+    "criteria": {
+      "main": "2026-04-24 19:11:51 -0500"
+    },
+    "done": false
+  },
+  "vampirism:vampire/become_vampire": {
+    "criteria": {
+      "main": "2026-04-24 19:11:51 -0500"
+    },
+    "done": true
+  },
+  "vampirism:vampire/resurrect": {
+    "criteria": {
+      "main": "2026-04-24 19:11:51 -0500"
+    },
+    "done": false
+  },
+  "vampirism:vampire/bat": {
+    "criteria": {
+      "action": "2026-04-25 17:42:54 -0500",
+      "main": "2026-04-24 19:11:51 -0500"
+    },
+    "done": true
+  },
+  "vampirism:recipes/decorations/general/fire_place": {
+    "criteria": {
+      "has_logs": "2026-04-24 19:52:51 -0500"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/charcoal": {
+    "criteria": {
+      "has_log": "2026-04-24 19:52:51 -0500"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/oak_planks": {
+    "criteria": {
+      "has_logs": "2026-04-24 19:52:51 -0500"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/oak_wood": {
+    "criteria": {
+      "has_log": "2026-04-24 19:52:51 -0500"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/oak_sign": {
+    "criteria": {
+      "has_planks": "2026-04-24 19:52:57 -0500"
+    },
+    "done": true
+  },
+  "minecraft:recipes/redstone/oak_trapdoor": {
+    "criteria": {
+      "has_planks": "2026-04-24 19:52:57 -0500"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/stick": {
+    "criteria": {
+      "has_planks": "2026-04-24 19:52:57 -0500"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/oak_stairs": {
+    "criteria": {
+      "has_planks": "2026-04-24 19:52:57 -0500"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/oak_fence": {
+    "criteria": {
+      "has_planks": "2026-04-24 19:52:57 -0500"
+    },
+    "done": true
+  },
+  "vampirism:recipes/decorations/vampire/altar_inspiration": {
+    "criteria": {
+      "has_planks": "2026-04-24 19:52:57 -0500"
+    },
+    "done": true
+  },
+  "minecraft:recipes/redstone/oak_button": {
+    "criteria": {
+      "has_planks": "2026-04-24 19:52:57 -0500"
+    },
+    "done": true
+  },
+  "vampirism:recipes/decorations/general/throne": {
+    "criteria": {
+      "has_planks": "2026-04-24 19:52:57 -0500"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/oak_slab": {
+    "criteria": {
+      "has_planks": "2026-04-24 19:52:57 -0500"
+    },
+    "done": true
+  },
+  "vampirism:recipes/decorations/hunter/cross": {
+    "criteria": {
+      "has_planks": "2026-04-24 19:52:57 -0500"
+    },
+    "done": true
+  },
+  "minecraft:recipes/redstone/oak_fence_gate": {
+    "criteria": {
+      "has_planks": "2026-04-24 19:52:57 -0500"
+    },
+    "done": true
+  },
+  "vampirism:recipes/decorations/bat_cage": {
+    "criteria": {
+      "has_planks": "2026-04-24 19:52:57 -0500"
+    },
+    "done": true
+  },
+  "minecraft:recipes/redstone/oak_pressure_plate": {
+    "criteria": {
+      "has_planks": "2026-04-24 19:52:57 -0500"
+    },
+    "done": true
+  },
+  "minecraft:recipes/redstone/oak_door": {
+    "criteria": {
+      "has_planks": "2026-04-24 19:52:57 -0500"
+    },
+    "done": true
+  },
+  "vampirism:recipes/combat/alchemy_table": {
+    "criteria": {
+      "has_planks": "2026-04-24 19:52:57 -0500"
+    },
+    "done": true
+  },
+  "vampirism:recipes/combat/hunter/crucifix": {
+    "criteria": {
+      "planks": "2026-04-24 19:52:57 -0500"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/barrel": {
+    "criteria": {
+      "has_planks": "2026-04-24 19:52:57 -0500"
+    },
+    "done": true
+  },
+  "vampirism:recipes/decorations/general/vampire_rack": {
+    "criteria": {
+      "has_planks": "2026-04-24 19:52:57 -0500"
+    },
+    "done": true
+  },
+  "vampirism:recipes/decorations/general/altar_cleansing": {
+    "criteria": {
+      "has_vampire_book": "2026-04-24 19:52:57 -0500"
+    },
+    "done": true
+  },
+  "vampirism:recipes/combat/vampire/vampire_clothing_crown": {
+    "criteria": {
+      "has_heart": "2026-04-25 17:42:43 -0500"
+    },
+    "done": true
+  },
+  "vampirism:recipes/combat/vampire/vampire_clothing_hat": {
+    "criteria": {
+      "has_heart": "2026-04-25 17:42:43 -0500"
+    },
+    "done": true
+  },
+  "vampirism:recipes/combat/vampire/vampire_clothing_boots": {
+    "criteria": {
+      "has_heart": "2026-04-25 17:42:43 -0500"
+    },
+    "done": true
+  },
+  "vampirism:recipes/combat/vampire/vampire_clothing_legs": {
+    "criteria": {
+      "has_heart": "2026-04-25 17:42:43 -0500"
+    },
+    "done": true
+  },
+  "minecraft:husbandry/root": {
+    "criteria": {
+      "consumed_item": "2026-04-25 17:42:45 -0500"
+    },
+    "done": true
+  },
+  "DataVersion": 3953
+}
