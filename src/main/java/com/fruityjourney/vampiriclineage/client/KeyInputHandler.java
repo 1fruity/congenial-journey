@@ -1,9 +1,7 @@
-package com.example.examplemod.client;
+package com.fruityjourney.vampiriclineage.client;
 
-import com.example.examplemod.ExampleMod;
-import com.example.examplemod.NetworkHandler;
-import com.example.examplemod.RequestBloodlinePacket;
-import com.google.common.graph.Network;
+import com.fruityjourney.vampiriclineage.VampiricLineage;
+import com.fruityjourney.vampiriclineage.RequestBloodlinePacket;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientPacketListener;
 import net.neoforged.api.distmarker.Dist;
@@ -13,7 +11,7 @@ import net.neoforged.neoforge.client.event.ClientTickEvent;
 
 import java.util.UUID;
 
-@EventBusSubscriber(modid= ExampleMod.MODID, value = Dist.CLIENT)
+@EventBusSubscriber(modid= VampiricLineage.MODID, value = Dist.CLIENT)
 public class KeyInputHandler {
     @SubscribeEvent
     public static void onClientTick(ClientTickEvent.Post event) {

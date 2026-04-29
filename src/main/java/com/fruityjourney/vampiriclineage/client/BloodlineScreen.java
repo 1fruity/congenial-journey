@@ -1,22 +1,20 @@
-package com.example.examplemod.client;
+package com.fruityjourney.vampiriclineage.client;
 
-import com.example.examplemod.BloodlineData;
-import com.example.examplemod.ExampleMod;
+import com.fruityjourney.vampiriclineage.BloodlineData;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.resources.DefaultPlayerSkin;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.game.ServerboundConfigurationAcknowledgedPacket;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 
 public class BloodlineScreen extends Screen {
-    public static final ResourceLocation BG = ResourceLocation.parse("examplemod:textures/gui_background.png");
-    public static final ResourceLocation WINDOW = ResourceLocation.parse("examplemod:textures/gui_window.png");
+    public static final ResourceLocation BG = ResourceLocation.parse("vampiriclineage:textures/gui_background.png");
+    public static final ResourceLocation WINDOW = ResourceLocation.parse("vampiriclineage:textures/gui_window.png");
 
     static class BloodlineNode {
         UUID id;

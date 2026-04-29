@@ -1,4 +1,4 @@
-package com.example.examplemod;
+package com.fruityjourney.vampiriclineage;
 
 import com.mojang.brigadier.CommandDispatcher;
 import net.minecraft.commands.CommandSourceStack;

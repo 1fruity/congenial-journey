@@ -1,4 +1,4 @@
-package com.example.examplemod.mixin;
+package com.fruityjourney.vampiriclineage.mixin;
 
 import de.teamlapen.vampirism.entity.player.FactionBasePlayer;
 import net.minecraft.world.entity.player.Player;

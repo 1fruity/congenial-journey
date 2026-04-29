@@ -1,4 +1,4 @@
-package com.example.examplemod;
+package com.fruityjourney.vampiriclineage;
 
 import com.mojang.authlib.GameProfile;
 import net.minecraft.core.HolderLookup;
@@ -7,7 +7,6 @@ import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.datafix.fixes.SavedDataUUIDFix;
 import net.minecraft.world.level.saveddata.SavedData;
 import org.jetbrains.annotations.NotNull;
 
