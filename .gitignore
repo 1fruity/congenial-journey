@@ -39,3 +39,4 @@ runs/
 **/src/generated/**/.cache/
 repo/
 !**/src/**/repo/
+runs/

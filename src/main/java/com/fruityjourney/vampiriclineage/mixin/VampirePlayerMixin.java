@@ -1,7 +1,7 @@
-package com.example.examplemod.mixin;
+package com.fruityjourney.vampiriclineage.mixin;
 
-import com.example.examplemod.BloodlineData;
-import com.example.examplemod.InfectionData;
+import com.fruityjourney.vampiriclineage.BloodlineData;
+import com.fruityjourney.vampiriclineage.InfectionData;
 import de.teamlapen.vampirism.api.entity.vampire.IVampire;
 import de.teamlapen.vampirism.entity.player.vampire.VampirePlayer;
 import net.minecraft.server.level.ServerLevel;

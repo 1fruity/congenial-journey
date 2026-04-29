@@ -1,10 +1,9 @@
-package com.example.examplemod;
+package com.fruityjourney.vampiriclineage;
 
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.ResourceLocation;
-import net.neoforged.neoforge.network.handling.IPayloadContext;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +11,7 @@ import java.util.UUID;
 
 public record BloodlinePacket(List<BloodlineData.BloodlineEntry> entries) implements CustomPacketPayload {
     public static final Type<BloodlinePacket> TYPE =
-            new Type<>(ResourceLocation.fromNamespaceAndPath("examplemod", "bloodline"));
+            new Type<>(ResourceLocation.fromNamespaceAndPath(VampiricLineage.MODID, "bloodline"));
 
     public static final StreamCodec<FriendlyByteBuf, BloodlinePacket> CODEC =
             StreamCodec.of((buf, pkt) -> {

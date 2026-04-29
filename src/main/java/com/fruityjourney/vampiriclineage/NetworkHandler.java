@@ -1,16 +1,14 @@
-package com.example.examplemod;
+package com.fruityjourney.vampiriclineage;
 
+import com.fruityjourney.vampiriclineage.client.ClientNetworkHandler;
 import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
-import net.neoforged.neoforge.network.registration.NetworkRegistry;
 
-import java.util.List;
 import java.util.UUID;
 
-@EventBusSubscriber(modid=ExampleMod.MODID, bus=EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid= VampiricLineage.MODID, bus=EventBusSubscriber.Bus.MOD)
 public class NetworkHandler {
     @SubscribeEvent
     public static void register(RegisterPayloadHandlersEvent event) {
@@ -37,7 +35,7 @@ public class NetworkHandler {
                 BloodlinePacket.CODEC,
                 (packet, context) -> {
                     context.enqueueWork(() -> {
-                        com.example.examplemod.client.ClientNetworkHandler.handle(packet);
+                        ClientNetworkHandler.handle(packet);
                     });
                 }
         );

@@ -1,6 +1,6 @@
-package com.example.examplemod.client;
+package com.fruityjourney.vampiriclineage.client;
 
-import com.example.examplemod.BloodlinePacket;
+import com.fruityjourney.vampiriclineage.BloodlinePacket;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 

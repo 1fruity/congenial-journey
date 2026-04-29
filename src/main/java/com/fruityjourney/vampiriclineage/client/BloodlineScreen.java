@@ -1,7 +1,6 @@
-package com.example.examplemod.client;
+package com.fruityjourney.vampiriclineage.client;
 
-import com.example.examplemod.BloodlineData;
-import com.example.examplemod.ExampleMod;
+import com.fruityjourney.vampiriclineage.BloodlineData;
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.yggdrasil.ProfileResult;
 import com.mojang.blaze3d.systems.RenderSystem;
@@ -23,10 +22,10 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class BloodlineScreen extends Screen {
-    public static final ResourceLocation BG = ResourceLocation.parse("examplemod:textures/gui_background.png");
-    public static final ResourceLocation WINDOW = ResourceLocation.parse("examplemod:textures/gui_window.png");
-    public static final ResourceLocation NODE = ResourceLocation.parse("examplemod:textures/node.png");
-    public static final ResourceLocation START_NODE = ResourceLocation.parse("examplemod:textures/start_node.png");
+    public static final ResourceLocation BG = ResourceLocation.parse("vampiriclineage:textures/gui_background.png");
+    public static final ResourceLocation WINDOW = ResourceLocation.parse("vampiriclineage:textures/gui_window.png");
+    public static final ResourceLocation NODE = ResourceLocation.parse("vampiriclineage:textures/node.png");
+    public static final ResourceLocation START_NODE = ResourceLocation.parse("vampiriclineage:textures/start_node.png");
 
     private static final ExecutorService SKIN_EXECUTOR = Executors.newCachedThreadPool();
 
