@@ -209,7 +209,7 @@ public class BloodlineScreen extends Screen {
         UUID pId = Minecraft.getInstance().player.getUUID();
         for (BloodlineNode node : nodes) {
             if (node.id.equals(pId)) {
-                panX = (windowWidth / 2.0) - (node.guiX + nodeSize / 2.0);
+                panX = node.guiX - (windowWidth / 2.0);
                 panY = (windowHeight / 6.0) - (node.guiY + nodeSize / 2.0);
                 minPanX = -maxX * zoom;
                 maxPanX = -minX * zoom;

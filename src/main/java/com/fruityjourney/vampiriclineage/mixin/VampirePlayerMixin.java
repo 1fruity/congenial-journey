@@ -2,6 +2,7 @@ package com.fruityjourney.vampiriclineage.mixin;
 
 import com.fruityjourney.vampiriclineage.BloodlineData;
 import com.fruityjourney.vampiriclineage.InfectionData;
+import com.fruityjourney.vampiriclineage.VampiricLineage;
 import de.teamlapen.vampirism.api.entity.vampire.IVampire;
 import de.teamlapen.vampirism.entity.player.vampire.VampirePlayer;
 import net.minecraft.server.level.ServerLevel;
@@ -27,7 +28,10 @@ public class VampirePlayerMixin {
             UUID infectorId = entity.getUUID();
 
             if (!(entity instanceof Player)) {
-                return;
+                UUID entityId = VampiricLineage.ENTITY_UUIDS.get(entity.getName().getString());
+                if (entityId != null) {
+                    infectorId = entityId;
+                } else {return;}
             }
             // add infector id to infected map
             InfectionData infections = InfectionData.get(level);

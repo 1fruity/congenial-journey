@@ -58,8 +58,20 @@ public class BloodlineData extends SavedData {
     }
 
     private void buildRecursive(MinecraftServer server, UUID node, UUID parent, int depth, List<BloodlineEntry> list) {
+        String name = null;
         GameProfile profile = server.getProfileCache().get(node).orElse(null);
-        list.add(new BloodlineEntry(node, parent, depth, (profile != null) ? profile.getName() : node.toString()));
+        if (profile == null) {
+            for (String eName : VampiricLineage.ENTITY_UUIDS.keySet()) {
+                UUID id = VampiricLineage.ENTITY_UUIDS.get(eName);
+                if (node.equals(id)) {
+                    name = eName;
+                    break;
+                }
+            }
+        } else {
+            name = profile.getName();
+        }
+        list.add(new BloodlineEntry(node, parent, depth, (name != null) ? name : node.toString()));
         for (UUID child : getChildren(node)) {
             buildRecursive(server, child, node, depth + 1, list);
         }
