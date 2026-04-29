@@ -1,6 +1,7 @@
 package com.fruityjourney.vampiriclineage.client;
 
 import com.fruityjourney.vampiriclineage.BloodlineData;
+import com.fruityjourney.vampiriclineage.VampiricLineage;
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.yggdrasil.ProfileResult;
 import com.mojang.blaze3d.systems.RenderSystem;
@@ -172,7 +173,7 @@ public class BloodlineScreen extends Screen {
                         });
                     }
                 } catch (Exception e) {
-                    ExampleMod.LOGGER.warn("Failed to load skin for " + node.name, e);
+                    VampiricLineage.LOGGER.warn("Failed to load skin for " + node.name, e);
                 }
             });
 
