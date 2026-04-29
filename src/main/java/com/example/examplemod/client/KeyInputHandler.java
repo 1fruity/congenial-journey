@@ -4,6 +4,7 @@ import com.example.examplemod.ExampleMod;
 import com.example.examplemod.NetworkHandler;
 import com.example.examplemod.RequestBloodlinePacket;
 import com.google.common.graph.Network;
+import de.teamlapen.vampirism.entity.player.vampire.VampirePlayer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientPacketListener;
 import net.neoforged.api.distmarker.Dist;
@@ -21,9 +22,12 @@ public class KeyInputHandler {
         if (mc.player != null && mc.level != null) {
             while (BloodlineKeybind.OPEN_BLOODLINE.consumeClick()) {
                 UUID target = mc.player.getUUID();
-                ClientPacketListener connection = mc.getConnection();
-                if (connection != null) {
-                    connection.send(new RequestBloodlinePacket(target));
+                VampirePlayer vampire = VampirePlayer.get(mc.player);
+                if (vampire.getLevel() > 0) {
+                    ClientPacketListener connection = mc.getConnection();
+                    if (connection != null) {
+                        connection.send(new RequestBloodlinePacket(target));
+                    }
                 }
             }
         }

@@ -2,21 +2,33 @@ package com.example.examplemod.client;
 
 import com.example.examplemod.BloodlineData;
 import com.example.examplemod.ExampleMod;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.yggdrasil.ProfileResult;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.resources.DefaultPlayerSkin;
+import net.minecraft.client.resources.SkinManager;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ServerboundConfigurationAcknowledgedPacket;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
 
+import java.awt.*;
 import java.util.*;
+import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class BloodlineScreen extends Screen {
     public static final ResourceLocation BG = ResourceLocation.parse("examplemod:textures/gui_background.png");
     public static final ResourceLocation WINDOW = ResourceLocation.parse("examplemod:textures/gui_window.png");
+    public static final ResourceLocation NODE = ResourceLocation.parse("examplemod:textures/node.png");
+    public static final ResourceLocation START_NODE = ResourceLocation.parse("examplemod:textures/start_node.png");
+
+    private static final ExecutorService SKIN_EXECUTOR = Executors.newCachedThreadPool();
 
     static class BloodlineNode {
         UUID id;
@@ -27,6 +39,7 @@ public class BloodlineScreen extends Screen {
         int guiY = 0;
         double tempX = 0;
         boolean expanded = true;
+        ResourceLocation skin;
     }
 
     private List<BloodlineNode> nodes;
@@ -35,12 +48,13 @@ public class BloodlineScreen extends Screen {
     private List<BloodlineNode> visibleNodes = new ArrayList<>();
     private BloodlineNode selected = null;
     private BloodlineNode rootNode = null;
+    private Button backButton;
 
     private int windowWidth = 256;
     private int windowHeight = 256;
     private int contentWidth = windowWidth - 22;
     private int contentHeight = windowHeight - 82;
-    private int nodeSize = 24;
+    private int nodeSize = 32;
 
     private int windowX = 0;
     private int windowY = 0;
@@ -56,10 +70,6 @@ public class BloodlineScreen extends Screen {
     private double zoom = 1.0;
     private double panX = 0;
     private double panY = 0;
-
-    private boolean isOutOfView(int x, int y, double viewLeft, double viewRight, double viewTop, double viewBottom) {
-        return (x + nodeSize < viewLeft || x > viewRight || y + nodeSize < viewTop || y > viewBottom);
-    }
 
     private void layout(Map<UUID, List<BloodlineNode>> childrenMap, BloodlineNode node, int[] cursor) {
         List<BloodlineNode> children = childrenMap.get(node.id);
@@ -125,7 +135,7 @@ public class BloodlineScreen extends Screen {
         BloodlineData.BloodlineEntry second = new BloodlineData.BloodlineEntry(UUID.randomUUID(), first.id(), first.depth() + 1, "Dev2");
         entries.add(second);
         BloodlineData.BloodlineEntry another =
-                new BloodlineData.BloodlineEntry(UUID.randomUUID(), first.id(), first.depth() + 1, "Dev3");
+                new BloodlineData.BloodlineEntry(UUID.fromString("bfd8bbe6-1e10-480b-b987-97b69d8a2a98"), first.id(), first.depth() + 1, "Sepsis");
         entries.add(another);
         entries.add(new BloodlineData.BloodlineEntry(UUID.randomUUID(), another.id(), another.depth() + 1, "Dev4"));
         entries.add(new BloodlineData.BloodlineEntry(UUID.randomUUID(), another.id(), another.depth() + 1, "Dev6"));
@@ -136,6 +146,8 @@ public class BloodlineScreen extends Screen {
         entries.add(new BloodlineData.BloodlineEntry(UUID.randomUUID(), second.id(), second.depth() + 1, "Dev9"));
         entries.add(new BloodlineData.BloodlineEntry(UUID.randomUUID(), second.id(), second.depth() + 1, "Dev10"));
         // end test bloodline :3
+
+        SkinManager skinManager = Minecraft.getInstance().getSkinManager();
 
         for (BloodlineData.BloodlineEntry entry : entries) {
             BloodlineNode node = new BloodlineNode();
@@ -151,6 +163,20 @@ public class BloodlineScreen extends Screen {
             } else {
                 childrenMap.computeIfAbsent(node.parent, k -> new ArrayList<>()).add(node);
             }
+            SKIN_EXECUTOR.execute(() -> {
+                try {
+                    var session = Minecraft.getInstance().getMinecraftSessionService();
+                    ProfileResult profileResult = Minecraft.getInstance().getMinecraftSessionService().fetchProfile(node.id, false);
+                    if (profileResult != null) {
+                        skinManager.getOrLoad(profileResult.profile()).thenAccept(s -> {
+                            node.skin = s.texture();
+                        });
+                    }
+                } catch (Exception e) {
+                    ExampleMod.LOGGER.warn("Failed to load skin for " + node.name, e);
+                }
+            });
+
         }
 
         visibleNodes.clear();
@@ -170,6 +196,35 @@ public class BloodlineScreen extends Screen {
     }
 
     @Override
+    protected void init() {
+        super.init();
+        windowX = (this.width - windowWidth) / 2;
+        windowY = (this.height - windowHeight) / 2 + 20;
+        contentX = windowX + 9;
+        contentY = windowY + 18;
+
+        backButton = Button.builder(Component.literal("Done"), button -> this.onClose()).bounds(
+                windowX + (windowWidth / 3), contentY + contentHeight + 2, windowWidth / 3, 20
+        ).build();
+        UUID pId = Minecraft.getInstance().player.getUUID();
+        for (BloodlineNode node : nodes) {
+            if (node.id.equals(pId)) {
+                panX = (windowWidth / 2.0) - (node.guiX + nodeSize / 2.0);
+                panY = (windowHeight / 6.0) - (node.guiY + nodeSize / 2.0);
+                minPanX = -maxX * zoom;
+                maxPanX = -minX * zoom;
+                minPanY = -maxY * zoom;
+                maxPanY = -minY * zoom;
+
+                panX = Math.max(minPanX, Math.min(maxPanX, panX));
+                panY = Math.max(minPanY, Math.min(maxPanY, panY));
+            }
+        }
+
+        this.addRenderableWidget(backButton);
+    }
+
+    @Override
     public boolean isPauseScreen() {
         return false;
     }
@@ -178,13 +233,7 @@ public class BloodlineScreen extends Screen {
     public void render(@NotNull GuiGraphics gui, int mouseX, int mouseY, float partialTick) {
 //        this.renderBackground(gui, mouseX, mouseY, partialTick);
         super.render(gui, mouseX, mouseY, partialTick);
-        windowX = (this.width - windowWidth) / 2;
-        windowY = (this.height - windowHeight) / 2;
-        contentX = windowX + 9;
-        contentY = windowY + 18;
 
-        RenderSystem.setShaderTexture(0, WINDOW);
-        gui.blit(WINDOW, windowX, windowY, 0, 0, windowWidth, windowHeight, 256, 256);
 
         gui.enableScissor(contentX, contentY, contentX + contentWidth, contentY + contentHeight);
 
@@ -215,6 +264,9 @@ public class BloodlineScreen extends Screen {
         int endX = (int)Math.ceil(right / size) * size;
         int endY = (int)Math.ceil(bottom / size) * size;
 
+        boolean mouseInContent = (mouseX >= contentX && mouseX <= contentX + contentWidth
+            && mouseY >= contentY && mouseY <= contentY + contentHeight);
+
         for (int x = startX; x < endX + size * 2; x += size) {
             for (int y = startY; y < endY + size * 2; y += size) {
                 gui.blit(BG, x, y, 0, 0, size, size, size, size);
@@ -224,15 +276,14 @@ public class BloodlineScreen extends Screen {
         for (BloodlineNode node : visibleNodes) {
             int x = node.guiX;
             int y = node.guiY;
-            int color = (node.parent == null) ? 0xFF641D5C : 0xFFFFFFFF;
 
             if (node.parent != null) {
                 BloodlineNode parent = nodeMap.get(node.parent);
                 if (parent != null) {
                     int x1 = parent.guiX + nodeSize / 2;
-                    int y1 = parent.guiY + nodeSize;
+                    int y1 = parent.guiY + nodeSize - 4;
                     int x2 = x + nodeSize / 2;
-                    int y2 = y;
+                    int y2 = y + 4;
                     int midY = (y1 + y2) / 2;
 
                     gui.vLine(x1 - 1, y1, midY, 0xFF635F5F);
@@ -249,32 +300,57 @@ public class BloodlineScreen extends Screen {
 
                 }
             }
-            gui.fill(x, y, x + nodeSize, y + nodeSize, 0xFF222222);
+        }
+
+        for (BloodlineNode node : visibleNodes) {
+            int x = node.guiX;
+            int y = node.guiY;
+
+            boolean isPlayerNode = node.id.equals(Minecraft.getInstance().player.getUUID());
+            if (node.parent == null) {
+                RenderSystem.setShaderColor((float)100/255, (float)29/255, (float)92/255, 1f);
+            } else if (isPlayerNode) {
+                RenderSystem.setShaderColor(1f, 1f, 1f, 1f);
+            } else if (!node.expanded) {
+                RenderSystem.setShaderColor(1f, 0f, 0f, 1f);
+            } else {
+                RenderSystem.setShaderColor(0.38f, 0.38f, 0.38f, 1f);
+            }
+            gui.blit((node.parent == null || isPlayerNode)
+                    ? START_NODE : NODE, x, y, 0, 0, nodeSize, nodeSize, nodeSize, nodeSize);
+            RenderSystem.setShaderColor(1f, 1f, 1f, 1f);
             var connection = Minecraft.getInstance().getConnection();
             var info = connection != null ? connection.getPlayerInfo(node.id) : null;
 
-            ResourceLocation skin = info != null
-                    ? info.getSkin().texture()
+            ResourceLocation skin = node.skin != null
+                    ? node.skin
                     : DefaultPlayerSkin.getDefaultTexture();
 
-            gui.blit(skin, x, y, nodeSize, nodeSize, 8, 8, 8, 8, 64, 64);
-            gui.blit(skin, x, y, nodeSize, nodeSize, 40, 8, 8, 8, 64, 64);
-            gui.renderOutline(x, y, nodeSize, nodeSize, node.expanded ? color : 0xFFFF0000);
+            gui.blit(skin, x+6, y+6, nodeSize-12, nodeSize-12, 8, 8, 8, 8, 64, 64);
+            gui.blit(skin, x+6, y+6, nodeSize-12, nodeSize-12, 40, 8, 8, 8, 64, 64);
 
-            if (guiMouseX >= x && guiMouseX <= x + nodeSize && guiMouseY >= y && guiMouseY <= y + nodeSize) {
+            if (mouseInContent && guiMouseX >= x && guiMouseX <= x + nodeSize && guiMouseY >= y && guiMouseY <= y + nodeSize) {
                 selected = node;
             }
-
-//            gui.drawString(font, node.name(), x, y + 10, 0xFFFFFF);
         }
 
 
         gui.pose().popPose();
         gui.disableScissor();
 
+        RenderSystem.enableBlend();
+        RenderSystem.setShaderTexture(0, WINDOW);
+        gui.blit(WINDOW, windowX, windowY, 0, 0, windowWidth, windowHeight, 256, 256);
+        RenderSystem.disableBlend();
+
         if (selected != null) {
             gui.renderTooltip(this.font, Component.literal(selected.name), mouseX, mouseY);
         }
+
+        backButton.render(gui, mouseX, mouseY, partialTick);
+        Component title = Component.literal(rootNode.name).withColor(0xFF641D5C)
+                        .append(Component.literal("'s Bloodline").withColor(0xFF000000));
+        gui.drawString(this.font, title, windowX + 8, windowY + 6, 0xFF000000, false);
     }
 
     @Override
@@ -284,7 +360,7 @@ public class BloodlineScreen extends Screen {
 
     @Override
     public boolean mouseClicked(double mouseX, double mouseY, int button) {
-        if (button == 0 && selected != null) {
+        if (button == 0 && selected != null && !selected.equals(rootNode)) {
             List<BloodlineNode> children = childrenMap.get(selected.id);
             if (children != null && !children.isEmpty()) {
                 selected.expanded = !selected.expanded;
@@ -298,8 +374,8 @@ public class BloodlineScreen extends Screen {
     @Override
     public boolean mouseDragged(double mouseX, double mouseY, int button, double dragX, double dragY) {
         if (button == 0) {
-            panX += dragX;
-            panY += dragY;
+            panX += dragX / zoom;
+            panY += dragY / zoom;
 
             minPanX = -maxX * zoom;
             maxPanX = -minX * zoom;

@@ -13,3 +13,5 @@
 /effect give Dev vampirism:sanguinare 1
 /give @p vampirism:human_heart
 /difficulty peaceful
+/vampirism level none Dev
+/vampirism level vampirism:vampire 1

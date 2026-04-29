@@ -72,12 +72,6 @@
     },
     "done": false
   },
-  "vampirism:vampire/kill_mother": {
-    "criteria": {
-      "main": "2026-04-25 15:02:32 -0500"
-    },
-    "done": false
-  },
   "vampirism:vampire/become_vampire": {
     "criteria": {
       "main": "2026-04-25 15:02:32 -0500"
@@ -231,6 +225,24 @@
   "vampirism:recipes/decorations/item_tent": {
     "criteria": {
       "has_wool": "2026-04-25 17:22:33 -0500"
+    },
+    "done": true
+  },
+  "vampirism:vampire/kill_mother": {
+    "criteria": {
+      "main": "2026-04-28 14:25:12 -0500"
+    },
+    "done": false
+  },
+  "minecraft:recipes/misc/paper": {
+    "criteria": {
+      "has_reeds": "2026-04-28 16:52:52 -0500"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/sugar_from_sugar_cane": {
+    "criteria": {
+      "has_sugar_cane": "2026-04-28 16:52:52 -0500"
     },
     "done": true
   },
