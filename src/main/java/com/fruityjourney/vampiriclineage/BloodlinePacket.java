@@ -18,26 +18,30 @@ public record BloodlinePacket(List<BloodlineData.BloodlineEntry> entries) implem
                 buf.writeInt(pkt.entries.size());
 
                 for (var entry : pkt.entries) {
-                    buf.writeUUID(entry.id());
-                    if (entry.parent() != null) {
+                    buf.writeUUID(entry.nodeId());
+                    buf.writeUUID(entry.playerId());
+                    if (entry.parentNodeId() != null) {
                         buf.writeBoolean(true);
-                        buf.writeUUID(entry.parent());
+                        buf.writeUUID(entry.parentNodeId());
                     } else {
                         buf.writeBoolean(false);
                     }
                     buf.writeInt(entry.depth());
                     buf.writeUtf(entry.name());
+                    buf.writeBoolean(entry.active());
                 }
             }, buf -> {
                 int size = buf.readInt();
                 List<BloodlineData.BloodlineEntry> list = new ArrayList<>();
                 for (int i=0; i<size; i++) {
-                    UUID id = buf.readUUID();
-                    UUID parent = buf.readBoolean() ? buf.readUUID() : null;
+                    UUID nodeId = buf.readUUID();
+                    UUID playerId = buf.readUUID();
+                    UUID parentNodeId = buf.readBoolean() ? buf.readUUID() : null;
                     int depth = buf.readInt();
                     String name = buf.readUtf();
+                    boolean active = buf.readBoolean();
 
-                    list.add(new BloodlineData.BloodlineEntry(id, parent, depth, name));
+                    list.add(new BloodlineData.BloodlineEntry(nodeId, playerId, parentNodeId, depth, name, active));
                 }
                 return  new BloodlinePacket(list);
             });

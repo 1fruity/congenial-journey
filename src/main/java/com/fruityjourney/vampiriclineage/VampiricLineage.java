@@ -39,7 +39,7 @@ public class VampiricLineage {
 
         @SubscribeEvent
         public static void onRegisterCommands(RegisterCommandsEvent event) {
-            BloodlineCommand.register(event.getDispatcher());
+            SetLineage.register(event.getDispatcher());
         }
     }
 }

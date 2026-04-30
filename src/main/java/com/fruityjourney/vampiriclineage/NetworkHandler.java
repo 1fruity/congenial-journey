@@ -22,8 +22,11 @@ public class NetworkHandler {
                         ServerPlayer player = (ServerPlayer) context.player();
                         var level = player.serverLevel();
                         var data = BloodlineData.get(level);
-                        UUID root = BloodlineData.getRoot(packet.target(), data);
-                        var tree = data.buildTree(level, root);
+                        BloodlineData.Node rootNode = data.getRootNode(packet.target());
+                        if (rootNode == null) {
+                            rootNode = new BloodlineData.Node(packet.target(), null);
+                        }
+                        var tree = data.buildTree(level, rootNode);
 
                         context.reply(new BloodlinePacket(tree));
                     });

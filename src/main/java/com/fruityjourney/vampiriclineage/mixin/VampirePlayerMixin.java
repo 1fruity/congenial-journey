@@ -49,7 +49,11 @@ public class VampirePlayerMixin {
             UUID infectorId = infections.getInfector(playerId);
             if (infectorId != null) {
                 BloodlineData bloodlines = BloodlineData.get(level);
-                bloodlines.addLink(playerId, infectorId);
+                BloodlineData.Node infectorNode = bloodlines.getActiveNode(infectorId);
+                if (infectorNode == null) {
+                    infectorNode = bloodlines.addNode(infectorId, null);
+                }
+                bloodlines.addNode(playerId, infectorNode.nodeId);
                 infections.remove(playerId);
             }
         }

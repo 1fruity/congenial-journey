@@ -3,8 +3,9 @@
   "package": "com.fruityjourney.vampiriclineage.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "VampirePlayerMixin",
-    "FactionBasePlayerAccessor"
+    "FactionBasePlayerAccessor",
+    "FactionPlayerHandlerMixin",
+    "VampirePlayerMixin"
   ],
   "injectors": {
     "defaultRequire": 1

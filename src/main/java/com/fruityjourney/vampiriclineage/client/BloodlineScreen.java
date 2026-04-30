@@ -31,14 +31,16 @@ public class BloodlineScreen extends Screen {
     private static final ExecutorService SKIN_EXECUTOR = Executors.newCachedThreadPool();
 
     static class BloodlineNode {
-        UUID id;
+        UUID nodeId;
+        UUID playerId;
         String name;
-        UUID parent = null;
+        UUID parentNodeId = null;
         int depth = 0;
         int guiX = 0;
         int guiY = 0;
         double tempX = 0;
         boolean expanded = true;
+        boolean active = true;
         ResourceLocation skin;
     }
 
@@ -72,7 +74,7 @@ public class BloodlineScreen extends Screen {
     private double panY = 0;
 
     private void layout(Map<UUID, List<BloodlineNode>> childrenMap, BloodlineNode node, int[] cursor) {
-        List<BloodlineNode> children = childrenMap.get(node.id);
+        List<BloodlineNode> children = childrenMap.get(node.nodeId);
 
         if (!node.expanded || children == null || children.isEmpty()) {
             node.tempX = cursor[0] ++;
@@ -94,7 +96,7 @@ public class BloodlineScreen extends Screen {
         visibleNodes.add(node);
 
         if (!node.expanded) return;
-        List<BloodlineNode> children = childrenMap.get(node.id);
+        List<BloodlineNode> children = childrenMap.get(node.nodeId);
         if (children != null) {
             for (BloodlineNode child : children) {
                 buildVisible(child, depth + 1);
@@ -118,8 +120,8 @@ public class BloodlineScreen extends Screen {
             node.guiX = (int)(node.tempX * nodeSize * 2);
             node.guiY = node.depth * nodeSize * 3;
 
-            minX = Math.min(minX, node.guiX - nodeSize);
-            minY = Math.min(minY, node.guiY - nodeSize);
+            minX = Math.min(minX, node.guiX + nodeSize - contentWidth);
+            minY = Math.min(minY, node.guiY + nodeSize - contentHeight);
             maxX = Math.max(maxX, (node.guiX + nodeSize + contentWidth / 2) - contentWidth);
             maxY = Math.max(maxY, (node.guiY + nodeSize + contentHeight / 2) - contentHeight);
         }
@@ -131,49 +133,51 @@ public class BloodlineScreen extends Screen {
         this.nodes = new ArrayList<>();
 
         // test bloodline
-        BloodlineData.BloodlineEntry first = entries.getFirst();
-        BloodlineData.BloodlineEntry second = new BloodlineData.BloodlineEntry(UUID.randomUUID(), first.id(), first.depth() + 1, "Dev2");
-        entries.add(second);
-        BloodlineData.BloodlineEntry another =
-                new BloodlineData.BloodlineEntry(UUID.fromString("bfd8bbe6-1e10-480b-b987-97b69d8a2a98"), first.id(), first.depth() + 1, "Sepsis");
-        entries.add(another);
-        entries.add(new BloodlineData.BloodlineEntry(UUID.randomUUID(), another.id(), another.depth() + 1, "Dev4"));
-        entries.add(new BloodlineData.BloodlineEntry(UUID.randomUUID(), another.id(), another.depth() + 1, "Dev6"));
-        another = new BloodlineData.BloodlineEntry(UUID.randomUUID(), another.id(), another.depth() + 1, "Dev5");
-        entries.add(another);
-        entries.add(new BloodlineData.BloodlineEntry(UUID.randomUUID(), another.id(), another.depth() + 1, "Dev7"));
-        entries.add(new BloodlineData.BloodlineEntry(UUID.randomUUID(), another.id(), another.depth() + 1, "Dev8"));
-        entries.add(new BloodlineData.BloodlineEntry(UUID.randomUUID(), second.id(), second.depth() + 1, "Dev9"));
-        entries.add(new BloodlineData.BloodlineEntry(UUID.randomUUID(), second.id(), second.depth() + 1, "Dev10"));
+//        BloodlineData.BloodlineEntry first = entries.getFirst();
+//        BloodlineData.BloodlineEntry second = new BloodlineData.BloodlineEntry(UUID.randomUUID(), first.id(), first.depth() + 1, "Dev2");
+//        entries.add(second);
+//        BloodlineData.BloodlineEntry another =
+//                new BloodlineData.BloodlineEntry(UUID.fromString("bfd8bbe6-1e10-480b-b987-97b69d8a2a98"), first.id(), first.depth() + 1, "Sepsis");
+//        entries.add(another);
+//        entries.add(new BloodlineData.BloodlineEntry(UUID.randomUUID(), another.id(), another.depth() + 1, "Dev4"));
+//        entries.add(new BloodlineData.BloodlineEntry(UUID.randomUUID(), another.id(), another.depth() + 1, "Dev6"));
+//        another = new BloodlineData.BloodlineEntry(UUID.randomUUID(), another.id(), another.depth() + 1, "Dev5");
+//        entries.add(another);
+//        entries.add(new BloodlineData.BloodlineEntry(UUID.randomUUID(), another.id(), another.depth() + 1, "Dev7"));
+//        entries.add(new BloodlineData.BloodlineEntry(UUID.randomUUID(), another.id(), another.depth() + 1, "Dev8"));
+//        entries.add(new BloodlineData.BloodlineEntry(UUID.randomUUID(), second.id(), second.depth() + 1, "Dev9"));
+//        entries.add(new BloodlineData.BloodlineEntry(UUID.randomUUID(), second.id(), second.depth() + 1, "Dev10"));
         // end test bloodline :3
 
         SkinManager skinManager = Minecraft.getInstance().getSkinManager();
 
         for (BloodlineData.BloodlineEntry entry : entries) {
             BloodlineNode node = new BloodlineNode();
-            node.id = entry.id();
+            node.playerId = entry.playerId();
+            node.nodeId = entry.nodeId();
             node.name = entry.name();
-            node.parent = entry.parent();
+            node.parentNodeId = entry.parentNodeId();
             node.depth = entry.depth();
+            node.active = entry.active();
 
             nodes.add(node);
-            nodeMap.put(node.id, node);
-            if (node.parent == null) {
+            nodeMap.put(node.nodeId, node);
+            if (node.parentNodeId == null) {
                 rootNode = node;
             } else {
-                childrenMap.computeIfAbsent(node.parent, k -> new ArrayList<>()).add(node);
+                childrenMap.computeIfAbsent(node.parentNodeId, k -> new ArrayList<>()).add(node);
             }
             SKIN_EXECUTOR.execute(() -> {
                 try {
                     var session = Minecraft.getInstance().getMinecraftSessionService();
-                    ProfileResult profileResult = Minecraft.getInstance().getMinecraftSessionService().fetchProfile(node.id, false);
+                    ProfileResult profileResult = Minecraft.getInstance().getMinecraftSessionService().fetchProfile(node.playerId, false);
                     if (profileResult != null) {
                         skinManager.getOrLoad(profileResult.profile()).thenAccept(s -> {
                             node.skin = s.texture();
                         });
                     }
                 } catch (Exception e) {
-                    VampiricLineage.LOGGER.warn("Failed to load skin for " + node.name, e);
+                    VampiricLineage.LOGGER.warn("Failed to load skin for {}", node.name, e);
                 }
             });
 
@@ -188,8 +192,8 @@ public class BloodlineScreen extends Screen {
             node.guiX = (int)(node.tempX * nodeSize * 2);
             node.guiY = node.depth * nodeSize * 3;
 
-            minX = Math.min(minX, node.guiX - nodeSize);
-            minY = Math.min(minY, node.guiY - nodeSize);
+            minX = Math.min(minX, node.guiX + nodeSize - contentWidth);
+            minY = Math.min(minY, node.guiY + nodeSize - contentHeight);
             maxX = Math.max(maxX, (node.guiX + nodeSize + contentWidth / 2) - contentWidth);
             maxY = Math.max(maxY, (node.guiY + nodeSize + contentHeight / 2) - contentHeight);
         }
@@ -208,8 +212,8 @@ public class BloodlineScreen extends Screen {
         ).build();
         UUID pId = Minecraft.getInstance().player.getUUID();
         for (BloodlineNode node : nodes) {
-            if (node.id.equals(pId)) {
-                panX = node.guiX - (windowWidth / 2.0);
+            if (node.playerId.equals(pId) && node.active) {
+                panX = (windowWidth / 2.0) - (node.guiX + nodeSize / 2.0);
                 panY = (windowHeight / 6.0) - (node.guiY + nodeSize / 2.0);
                 minPanX = -maxX * zoom;
                 maxPanX = -minX * zoom;
@@ -218,6 +222,7 @@ public class BloodlineScreen extends Screen {
 
                 panX = Math.max(minPanX, Math.min(maxPanX, panX));
                 panY = Math.max(minPanY, Math.min(maxPanY, panY));
+                break;
             }
         }
 
@@ -277,8 +282,8 @@ public class BloodlineScreen extends Screen {
             int x = node.guiX;
             int y = node.guiY;
 
-            if (node.parent != null) {
-                BloodlineNode parent = nodeMap.get(node.parent);
+            if (node.parentNodeId != null) {
+                BloodlineNode parent = nodeMap.get(node.parentNodeId);
                 if (parent != null) {
                     int x1 = parent.guiX + nodeSize / 2;
                     int y1 = parent.guiY + nodeSize - 4;
@@ -306,8 +311,8 @@ public class BloodlineScreen extends Screen {
             int x = node.guiX;
             int y = node.guiY;
 
-            boolean isPlayerNode = node.id.equals(Minecraft.getInstance().player.getUUID());
-            if (node.parent == null) {
+            boolean isPlayerNode = node.playerId.equals(Minecraft.getInstance().player.getUUID());
+            if (node.parentNodeId == null) {
                 RenderSystem.setShaderColor((float)100/255, (float)29/255, (float)92/255, 1f);
             } else if (isPlayerNode) {
                 RenderSystem.setShaderColor(1f, 1f, 1f, 1f);
@@ -316,11 +321,9 @@ public class BloodlineScreen extends Screen {
             } else {
                 RenderSystem.setShaderColor(0.38f, 0.38f, 0.38f, 1f);
             }
-            gui.blit((node.parent == null || isPlayerNode)
+            gui.blit((node.parentNodeId == null || isPlayerNode)
                     ? START_NODE : NODE, x, y, 0, 0, nodeSize, nodeSize, nodeSize, nodeSize);
             RenderSystem.setShaderColor(1f, 1f, 1f, 1f);
-            var connection = Minecraft.getInstance().getConnection();
-            var info = connection != null ? connection.getPlayerInfo(node.id) : null;
 
             ResourceLocation skin = node.skin != null
                     ? node.skin
@@ -361,7 +364,7 @@ public class BloodlineScreen extends Screen {
     @Override
     public boolean mouseClicked(double mouseX, double mouseY, int button) {
         if (button == 0 && selected != null && !selected.equals(rootNode)) {
-            List<BloodlineNode> children = childrenMap.get(selected.id);
+            List<BloodlineNode> children = childrenMap.get(selected.nodeId);
             if (children != null && !children.isEmpty()) {
                 selected.expanded = !selected.expanded;
                 rebuildLayout();

@@ -22,7 +22,7 @@ public class KeyInputHandler {
             while (BloodlineKeybind.OPEN_BLOODLINE.consumeClick()) {
                 UUID target = mc.player.getUUID();
                 VampirePlayer vampire = VampirePlayer.get(mc.player);
-                if (vampire.getLevel() > 0) {
+                if (vampire.getLevel() >= 0) {
                     ClientPacketListener connection = mc.getConnection();
                     if (connection != null) {
                         connection.send(new RequestBloodlinePacket(target));
